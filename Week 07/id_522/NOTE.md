@@ -90,18 +90,20 @@ print(a)
 
 #快速排序 ，双指针两边夹逼法定位pivot
 class Solution:
-    def qsort(self,arr,begin,end):
+    def qsort3(self,arr,begin,end):
         if begin>=end:return
         def findp(arr,ss,ee):
             left =ss
             right=ee
             #双指针夹逼的方法
             while 1:
-                while arr[left] < arr[p] and left<right:  left +=1
-                while arr[right] >= arr[p] and left<right: right-=1
-                if left !=right:
+                while arr[left] < arr[ee] and left<right:  left +=1
+                while arr[right] >= arr[ee] and left<right: right-=1
+                #if left !=right:
+                if left < right:
                     arr[left],arr[right]=arr[right],arr[left]
                     left+=1
+                    #right-=1
                 else:
                     break
                     
@@ -109,14 +111,14 @@ class Solution:
             return left
 
         p=findp(arr,begin,end)
-        self.qsort(arr,begin,p-1)
-        self.qsort(arr,p+1,end)
+        self.qsort3(arr,begin,p-1)
+        self.qsort3(arr,p+1,end)
 
 cc=Solution()
 aa=[440, 551, 2, 34444444, 5, 6, 107, 7, 79999, 107, 7, 79999, 134, 44, 65,1,1,123,23,3333,66, 88,79999, 134, 44, 65,1,1,79999]
 s=0
 end=len(aa)-1
-cc.qsort(aa,s,end)
+cc.qsort3(aa,s,end)
 print(aa)
 
 
